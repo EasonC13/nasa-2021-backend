@@ -29,13 +29,15 @@ import random
 import json
 
 
-from api.api_v1.api import router as api_v1_router
-
-app.include_router(api_v1_router, prefix="/api/v1", tags=["API"])
-
-
 from fastapi.responses import HTMLResponse, FileResponse
 import os
+
+from api.point_calculator import router as point_calculator_router
+
+app.include_router(point_calculator_router, prefix="", tags=["API"])
+
+from db import db
+
 
 static_file_path = "./static/"
 @app.get("/")
